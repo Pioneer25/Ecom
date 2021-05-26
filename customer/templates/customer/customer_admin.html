@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+
+{% block title %}CUSTOMER ADMIN | {% endblock %}
+{% block content %}
+  <div class="box">
+<h1 class="title">CUSTOMER ADMIN - {{ my_user_profile.name }}</h1>
+<h2 class="title">MY BALANCE - {{ user.balance}}</h2>
+<a href="{% url 'balance'%}" class="button is-dark is-uppercase mb-6">ADD balance</a>
+<a href="{% url 'logout' %}" class="button is-danger is-uppercase">Log out</a>
+<a href="{% url 'wishlist' %}" class="button is-danger is-uppercase">MY Wishlist</a>
+</div>
+<td colspan= 4> My orders<td>
+
+      
+<table class="table table-hover table-bordered text-center">
+      <tr class="text-center">
+        <th>Date Ordered</th>
+        <th>Product</th>
+        <th>quantity</th>
+        <th>Price</th>
+        <th>address</th>
+      </tr>
+      {% for orders in my_orders %}
+        <tr>
+          <td>{{ orders.order.created_at }}</td>
+          <td>{{ orders.product }}</td>
+          <td>{{orders.quantity}}</td>
+          <td>${{ orders.get_total_price}}</td>
+          <td>{{ orders.order.address }}</td>
+           
+
+        </tr>
+        
+      {% empty %}
+        <tr>
+          <td colspan= 4> You have no orders.</td>
+        </tr>
+      {% endfor %}
+      
+      
+      
+    </table>
+    {% endblock content %}
+
+

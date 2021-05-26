@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Vendor admin | {% endblock %}
+{% block content %}
+  <div class="box">
+<h1 class="title">Vendor admin - {{ vendor.name }}</h1>
+<a href="{% url 'logout' %}" class="button is-danger is-uppercase">Log out</a>
+ <a href="{% url 'export_excel'%}" class="button is-dark is-uppercase mb-6">EXPORT EXCEL</a>
+
+</div>
+<div class="box">
+       <h2 class="is-size-3 mb-4">MY PRODUCT</h2>
+        <a href="{% url 'add_product'%}" class="button is-dark is-uppercase mb-6">ADD PRODUCT</a>
+
+      
+
+        {% if products %}
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                          <td>{{product.title}}</td>
+                          <td>${{product.price}}</td>
+                           
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You don't have any products yet...</p>
+        {% endif %}
+    </div>
+ <table class="table table-hover table-bordered text-center">
+      <tr class="text-center">
+        <th>Date Ordered</th>
+        <th>Product</th>
+        <th>quantity</th>
+        <th>Price</th>
+      </tr>
+      {% for orders in vendor_order %}
+        <tr>
+          <td>{{ orders.order.created_at }}</td>
+          <td>{{ orders.product }}</td>
+          <td>{{orders.quantity}}
+      	  </td>
+          <td>${{ orders.price}}</td>
+
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan= 4> You have no orders.</td>
+        </tr>
+      {% endfor %}
+{% endblock %}
