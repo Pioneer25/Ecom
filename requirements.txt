@@ -81,7 +81,7 @@ six==1.14.0
 #sos==4.0
 sqlparse==0.4.1
 ssh-import-id==5.10
-systemd-python==234
+#systemd-python==234
 tablib==3.0.0
 Twisted==18.9.0
 ubuntu-advantage-tools==20.3
