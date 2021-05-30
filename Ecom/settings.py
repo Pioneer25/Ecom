@@ -25,7 +25,7 @@ SECRET_KEY = 'i-xg)c4$26ld6)1dy38^mzzex5cap&^57d8j3n8hlbn@1dfc!%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['165.232.177.28']
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'become_admin'
 LOGOUT_REDIRECT_URL = 'home'
@@ -99,13 +99,28 @@ WSGI_APPLICATION = 'Ecom.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
+if DEBUG :
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+ }
+else:
+    
+
+  DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'EcomDB',
+        'USER': 'ecom_admin',
+        'PASSWORD': 'testing123',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
+
+
 
 
 # Password validation
