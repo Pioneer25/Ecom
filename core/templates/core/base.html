@@ -31,19 +31,24 @@
                     <a href="{% url 'contact'%}" class="navbar-item">CONTACT</a>
                  
                                     
-                    
-                      
+                    {% if request.user.is_authenticated %}
+                      <a href="{% url 'vendor_admin'%}" class="navbar-item">VENDOR ADMIN </a>
+                    {% else %} 
                     <a href="{% url 'become_vendor'%}" class="navbar-item">BECOME VENDOR </a>
-                  <a href="{% url 'become_customer'%}" class="navbar-item">USER SIGN UP </a>
+                      {% endif %}
                       
                  
-                      {% if request.user.is_authenticated %}
-                         {% if CUSTOMER %}
+                     
+                      
+                        {% if request.user.is_authenticated %}
+                         
                           <a href="{% url 'customer_admin'%}" class="navbar-item">USER PROFILE </a>
-                         {% else %}
-                          <a href="{% url 'vendor_admin'%}" class="navbar-item">VENDOR ADMIN </a>
-                         {% endif %}
-                        {% endif %}
+                      {% else %}
+                         <a href="{% url 'become_customer'%}" class="navbar-item">USER SIGN UP </a>
+                     {% endif %}
+                   
+                         
+                        
                    
                   {% if request.user.is_authenticated %}                       
                      <a href="{% url 'cart' %}" class="button is-dark">Cart{% if cart %} ({{ cart|length }}){% endif %}</a>
