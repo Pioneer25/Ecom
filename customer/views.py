@@ -12,6 +12,7 @@ from .forms import balanceForm
 
 # Create your views here.
 def become_customer(request,backend='django.contrib.auth.backends.ModelBackend'):
+    
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
 
