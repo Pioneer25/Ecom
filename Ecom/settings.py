@@ -25,8 +25,8 @@ SECRET_KEY = 'i-xg)c4$26ld6)1dy38^mzzex5cap&^57d8j3n8hlbn@1dfc!%'
 # SECURITY WARNING: don't run with debug turned on in production!git
 DEBUG = False
 
-ALLOWED_HOSTS = ['165.232.177.28','ecom.games']
-LOGIN_URL = 'login'
+ALLOWED_HOSTS = ['localhost','165.232.177.28','www.myecom.me','myecom.me']
+LOGIN_URL = 'login' 
 LOGIN_REDIRECT_URL = 'become_admin'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
