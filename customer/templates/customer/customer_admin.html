@@ -5,7 +5,7 @@
   <div class="box">
 <h1 class="title">CUSTOMER ADMIN - {{ my_user_profile.name }}</h1>
 <h2 class="title">MY BALANCE - {{ user.balance}}</h2>
-<a href="{% url 'balance'%}" class="button is-dark is-uppercase mb-6">ADD balance</a>
+<a href="{% url 'updatebalance' customers.id %}" class="button is-dark is-uppercase mb-6">ADD balance</a>
 <a href="{% url 'logout' %}" class="button is-danger is-uppercase">Log out</a>
 <a href="{% url 'wishlist' %}" class="button is-danger is-uppercase">MY Wishlist</a>
 </div>

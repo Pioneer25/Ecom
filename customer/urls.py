@@ -9,7 +9,7 @@ urlpatterns = [
     path('customer_admin/', views.customer_admin, name='customer_admin'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', auth_views.LoginView.as_view(template_name='customer/login.html'), name='login'),
-    path('balance/', views.balance, name='balance'),
+    path('updatebalance/<str:pk>/', views.updatebalance, name='updatebalance'),
     path("wishlist", views.wishlist, name="wishlist"),
     
    

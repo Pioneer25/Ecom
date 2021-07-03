@@ -39,21 +39,26 @@ def customer_admin(request):
     return render(request,'customer/customer_admin.html',{'my_user_profile':my_user_profile,'my_orders':my_orders,'user':user})
 @login_required
 def balance(request):
-    
+    form=balanceForm()
     if request.method == 'POST':
-        form = balanceForm(request.POST, request.FILES)
+        form = balanceForm(request.POST)
 
         if form.is_valid():
-            mybalance = form.save(commit=False)
-            mybalance.customer = request.user.customer
-            
-            mybalance.save()
-
-            return redirect('customer_admin')
-    else:
-        form = balanceForm()
-    
+            form.save()
+            return redirect('/')
     return render(request, 'customer/balance.html', {'form': form})
+@login_required
+def updatebalance(request,pk):
+    customers=request.user.customer(id=pk)
+    form=balanceForm(instance=customers)
+    if request.method == 'POST':
+        form = balanceForm(request.POST,instance=customers)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    return render(request, 'customer/balance.html', {'form': form})
+
 @login_required
 def wishlist(request):
     products = Product.objects.filter(users_wishlist=request.user)
