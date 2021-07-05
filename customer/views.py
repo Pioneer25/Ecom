@@ -33,7 +33,7 @@ def become_customer(request,backend='django.contrib.auth.backends.ModelBackend')
 def customer_admin(request):
     my_user_profile = Customer.objects.filter(name=request.user).first()
     my_orders=OrderItem.objects.filter(owner=my_user_profile)
-   # user = my_balance.objects.filter(user_balance=my_user_profile)
+    user = my_balance.objects.filter(user_balance=my_user_profile)
 	 
 	
     return render(request,'customer/customer_admin.html',{'my_user_profile':my_user_profile,'my_orders':my_orders,'user':user})
