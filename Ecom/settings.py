@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'i-xg)c4$26ld6)1dy38^mzzex5cap&^57d8j3n8hlbn@1dfc!%'
 
 # SECURITY WARNING: don't run with debug turned on in production!git
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost','165.232.177.28','www.myecom.me','myecom.me']
 LOGIN_URL = 'login' 
