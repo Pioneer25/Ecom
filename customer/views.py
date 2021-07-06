@@ -36,7 +36,7 @@ def customer_admin(request):
     #user = my_balance.objects.filter(user_balance=my_user_profile)
 	 
 	
-    return render(request,'customer/customer_admin.html',{'my_user_profile':my_user_profile,'my_orders':my_orders})
+    return render(request,'customer/customer_admin.html',{'my_user_profile':my_user_profile,'my_orders':my_orders,'user':user})
 @login_required
 def balance(request):
     form=balanceForm()
