@@ -39,16 +39,16 @@ class Product(models.Model):
            else:
                return 'https://via.placeholder.com/240x180.jpg'
     
-   # def make_thumbnail(self, image, size=(300, 200)):
-    #    img = Image.open(image)
-     #   img.convert('RGB')
-      #  img.thumbnail(size)
+   def make_thumbnail(self, image, size=(300, 200)):
+      img = Image.open(image)
+       img.convert('RGB')
+        img.thumbnail(size)
 
-       # thumb_io = BytesIO()
-        #img.save(thumb_io, 'jpg', quality=85)
+        thumb_io = BytesIO()
+        img.save(thumb_io, 'JPEG', quality=85)
 
-        #thumbnail = File(thumb_io, name=image.name)
+        thumbnail = File(thumb_io, name=image.name)
 
-        #return thumbnail
+        return thumbnail
   
    
