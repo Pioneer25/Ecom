@@ -25,7 +25,6 @@ urlpatterns = [
     path('vendor/',include('vendor.urls')),
     path('customer/',include('customer.urls')),
     path('cart/',include('cart.urls')),
-    
     path('product/',include('product.urls')),
     path('accounts/',include('allauth.urls')),
     path('google/', TemplateView.as_view(template_name="customer/become_customer.html"))
