@@ -5,10 +5,3 @@ class balanceForm(ModelForm):
     class Meta:
         model = my_balance
         fields = ('balance','user_balance')
-class CustomerForm(ModelForm):
-    class Meta:
-        model=Customer
-        fields=[
-            'name',
-            'Email'
-        ]
