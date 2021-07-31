@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from product.models import Product
 from customer.models import Customer
-from Vendor.models import Vendor
+from vendor.models import Vendor
 def base(request):
     customer_profile=Customer.objects.filter(created_by = request.user)
     vendor_profile=Vendor.objects.filter(created_by = request.user)
