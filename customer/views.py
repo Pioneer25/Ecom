@@ -23,7 +23,7 @@ def become_customer(request,backend='django.contrib.auth.backends.ModelBackend')
 
             customer = Customer.objects.create(name=user.username, created_by=user)
 
-            return redirect('home')
+        return redirect('home')
     else:
         form = UserCreationForm()
 
