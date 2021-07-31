@@ -5,24 +5,27 @@ from django.contrib.auth.decorators import login_required
 from .models import Customer,my_balance
 from django.utils.text import slugify
 from product.models import Product
-from .forms import balanceForm , CustomerForm
+from .forms import balanceForm 
+from django.contrib.auth.forms import UserCreationForm
 
 
 
 # Create your views here.
 def become_customer(request,backend='django.contrib.auth.backends.ModelBackend'):
     
-    if request.method == 'POST':
-        form = CustomerForm(request.POST)
+   if request.method == 'POST':
+        form = UserCreationForm(request.POST)
 
         if form.is_valid():
-            form.instance.created_by = request.user
-            form.save()
-            username = form.cleaned_data.get('name')
-            messages.success(request,f'CONGRATS {username} !, Your User profile is now created!')
-            return redirect("home")
+            user = form.save()
+
+            login(request, user,backend='django.contrib.auth.backends.ModelBackend')
+
+            customer = Customer.objects.create(name=user.username, created_by=user)
+
+            return redirect('home')
     else:
-        form = CustomerForm()
+        form = UserCreationForm()
 
     return render(request, 'customer/become_customer.html', {'form': form})
 
