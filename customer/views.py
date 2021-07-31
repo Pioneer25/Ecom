@@ -29,7 +29,6 @@ def become_customer(request,backend='django.contrib.auth.backends.ModelBackend')
 
     return render(request, 'customer/become_customer.html', {'form': form})
 
-
 @login_required
 def customer_admin(request):
     my_user_profile = Customer.objects.filter(name=request.user).first()
