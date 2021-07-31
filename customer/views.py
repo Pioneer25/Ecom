@@ -1,12 +1,11 @@
 from cart.models import OrderItem
 from django.shortcuts import render , redirect
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Customer,my_balance
 from django.utils.text import slugify
 from product.models import Product
-from .forms import balanceForm
+from .forms import balanceForm , CustomerForm
 
 
 
@@ -14,18 +13,16 @@ from .forms import balanceForm
 def become_customer(request,backend='django.contrib.auth.backends.ModelBackend'):
     
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomerForm(request.POST)
 
         if form.is_valid():
-            user = form.save()
-
-            login(request, user,backend='django.contrib.auth.backends.ModelBackend')
-
-            customer = Customer.objects.create(name=user.username, created_by=user)
-
-            return redirect('home')
+            form.instance.created_by = request.user
+            form.save()
+            username = form.cleaned_data.get('name')
+            messages.success(request,f'CONGRATS {username} !, Your User profile is now created!')
+            return redirect("home")
     else:
-        form = UserCreationForm()
+        form = CustomerForm()
 
     return render(request, 'customer/become_customer.html', {'form': form})
 
