@@ -31,9 +31,9 @@
                     
                  
                                     
-                  {% if request.user.is_authenticated  %}
+                  {% if request.user.vendor  %}
                       <a href="{% url 'vendor_admin'%}" class="navbar-item">VENDOR ADMIN </a>
-                  {% elif request.user.is_authenticated  %}
+                  {% elif request.user.customer  %}
                       <a href="{% url 'customer_admin'%}" class="navbar-item">USER PROFILE </a>
                   {% else %} 
                       <a href="{% url 'become_vendor'%}" class="navbar-item">BECOME VENDOR </a>
