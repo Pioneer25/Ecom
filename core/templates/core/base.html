@@ -46,7 +46,7 @@
                          
                         
                    
-                   {% if request.user.is_authenticated %}                       
+                   {% if request.user.customer %}                       
                      <a href="{% url 'cart' %}" class="button is-dark">Cart{% if cart %} ({{ cart|length }}){% endif %}</a>
                   {% endif %}
                 
