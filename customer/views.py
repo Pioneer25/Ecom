@@ -12,8 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 def become_customer(request,backend='django.contrib.auth.backends.ModelBackend'):
-    
-   if request.method == 'POST':
+    if request.method == 'POST':
         form = UserCreationForm(request.POST)
 
         if form.is_valid():
@@ -24,10 +23,10 @@ def become_customer(request,backend='django.contrib.auth.backends.ModelBackend')
             customer = Customer.objects.create(name=user.username, created_by=user)
 
             return redirect('home')
-        else:
-         form = UserCreationForm()
+    else:
+        form = UserCreationForm()
 
-    return render(request, 'customer/become_customer.html', {'form': form})
+    return render(request, 'customer/customer_vendor.html', {'form': form})
 @login_required
 def customer_admin(request):
     my_user_profile = Customer.objects.filter(name=request.user).first()
