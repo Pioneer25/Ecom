@@ -21,6 +21,8 @@
     <a href="{% url 'login' %}">Log in</a>
   <h1>Sign in with google</h1>
   {% if request.user.customer %}
+  <a href="{% url 'customer_admin'%}" class="navbar-item">USER PROFILE </a>
+  {% else %}
   <a href="{% provider_login_url 'google' %}">Google Sign in</a>
   {% endif %}
   </body>

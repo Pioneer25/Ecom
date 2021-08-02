@@ -10,8 +10,4 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='customer/login.html'), name='login'),
     path('updatebalance/<str:pk>/', views.updatebalance, name='updatebalance'),
     path("wishlist", views.wishlist, name="wishlist"),
-    
-   
-    
-   
 ]
